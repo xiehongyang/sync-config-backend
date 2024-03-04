@@ -1,0 +1,27 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Authentication Success</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<h1>Authentication Success</h1>
+<h2>Close in two seconds</h2>
+</body>
+<script>
+  window.onload = function() {
+    setTimeout(() => {
+      const message = {
+        type: 'oauth-token',
+        token: '{{token}}'
+      }
+      window.opener.postMessage(message, 'http://localhost:4201')
+      window.close()
+    }, 2000)
+  }
+</script>
+</html>
