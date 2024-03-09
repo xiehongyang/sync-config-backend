@@ -17,6 +17,7 @@ export class UserService {
 
   }
 
+
   async loginByGoogle(userProfile: googleProfile) {
     const { provider, providerId, email, name, picture } = userProfile;
     try {
@@ -38,6 +39,7 @@ export class UserService {
       };
 
       const newUser = await this.userModel.create(userCreateData);
+      console.log('newUser', newUser);
       const token = await this.jwtService.signAsync({
         sub: newUser._id,
         email: newUser.email
@@ -52,6 +54,6 @@ export class UserService {
   }
 
   async findByEmail(email: string): Promise<UserDocument | null> {
-    return this.userModel.findOne({ email });
+    return this.userModel.findOne({ email }, { name: true, picture: true, email: true });
   }
 }
