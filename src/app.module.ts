@@ -6,7 +6,6 @@ import { UserModule } from "./user/user.module";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { AuthModule } from "src/auth/auth.module";
 import { WorkModule } from './work/work.module';
-import { LogisticModule } from './logistic/logistic.module';
 
 @Module({
   imports: [
@@ -23,7 +22,6 @@ import { LogisticModule } from './logistic/logistic.module';
       isGlobal: true
     }),
     WorkModule,
-    LogisticModule
   ],
   controllers: [AppController],
   providers: [AppService]

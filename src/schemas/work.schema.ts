@@ -9,12 +9,19 @@ export type WorkDocument = HydratedDocument<Work>;
 })
 export class Work {
 
-  @Prop({ required: true, type: String, unique: true })
+  @Prop( { required: true, type: String, unique: true })
   uuid;
   @Prop({ type: String })
   title;
+  @Prop({ type: String})
+  description;
   @Prop({ type: Object })
   content;
+  @Prop({type: Boolean, default: false})
+  isStar;
+  @Prop({type: Boolean, default: false})
+  isDelete;
+
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
   author: User;
 }
