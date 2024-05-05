@@ -25,7 +25,7 @@ export class UserController {
   async googleAuthCallback(@Req() req, @Res() res: Response) {
     try {
       const token = await this.userService.loginByGoogle(req.user);
-      return res.render('callback', { token: token });
+      return res.render('callback', { token: token, frontEndUrl: process.env.FRONT_END_URI });
     } catch (e) {
       console.log("e", e);
       throw new UnauthorizedException();
