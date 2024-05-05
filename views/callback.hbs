@@ -19,7 +19,7 @@
         type: 'oauth-token',
         token: '{{token}}'
       }
-      window.opener.postMessage(message, 'http://localhost:4201')
+      window.opener.postMessage(message, process.env.FRONT_END_URI)
       window.close()
     }, 2000)
   }
