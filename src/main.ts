@@ -11,7 +11,8 @@ async function bootstrap() {
   app.useGlobalInterceptors(new ResponseInterceptor());
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
-  app.setViewEngine('hbs');
+  app.set('view engine', 'html');
+  app.engine('html', require('hbs').__express);
   app.enableCors();
 
   await app.listen(3000);
