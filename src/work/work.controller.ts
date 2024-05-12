@@ -52,5 +52,11 @@ export class WorkController {
     return this.workService.deleteWorks(payload);
   }
 
+  @Post('duplicate/:id')
+  async duplicateWorks(@Param("id") id: string, @Req() req) {
+    const userId = req.user._id;
+    return this.workService.duplicateWork(id, userId);
+  }
+
 
 }

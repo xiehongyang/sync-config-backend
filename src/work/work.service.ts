@@ -57,5 +57,18 @@ export class WorkService {
     return this.workModel.findOne({ uuid: id }).lean();
   }
 
+  async duplicateWork(id: string, userId: any) {
+    const oldWork = await this.getWork(id);
+    const uuid = nanoid(6);
+    const newEmptyWork: Partial<WorkDocument> = {
+      author: userId,
+      uuid,
+      title:  oldWork ? oldWork.title : '',
+      description:  oldWork ? oldWork.description : '',
+      content:  oldWork ? oldWork.content : []
+    };
+    return this.workModel.create(newEmptyWork);
+  }
+
 
 }
